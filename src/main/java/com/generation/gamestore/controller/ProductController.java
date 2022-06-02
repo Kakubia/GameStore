@@ -3,6 +3,8 @@ package com.generation.gamestore.controller;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,12 +53,12 @@ public class ProductController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Product> post(@RequestBody Product product){
+	public ResponseEntity<Product> post(@Valid @RequestBody Product product){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(product));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Product> put(@RequestBody Product product){
+	public ResponseEntity<Product> put(@Valid @RequestBody Product product){
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(product));
 	}
 	
